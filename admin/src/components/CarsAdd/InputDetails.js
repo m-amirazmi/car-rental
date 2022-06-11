@@ -66,8 +66,8 @@ export default function InputDetails({ setInput, input, years, carList, handleIm
 						<option value="" disabled>
 							-- Select Transmission --
 						</option>
-						{TRANSMISSIONS.map((t) => (
-							<option key={t} value={t}>
+						{TRANSMISSIONS.map((t, key) => (
+							<option key={key} value={key}>
 								{t}
 							</option>
 						))}
