@@ -7,4 +7,4 @@ router.post('/', createCar);
 router.put('/:id', updateCar);
 router.delete('/:id', removeCar);
 
-module.exports = router
+module.exports = router;

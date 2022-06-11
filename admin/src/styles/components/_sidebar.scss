@@ -1,0 +1,11 @@
+.sidebar {
+	height: calc(100vh - 66px);
+	position: sticky;
+	top: 66px;
+	.sidebar__link {
+		transition: all 0.25s ease-in;
+		&:hover {
+			background-color: rgba(53, 84, 209, 0.1);
+		}
+	}
+}
