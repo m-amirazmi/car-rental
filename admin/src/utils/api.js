@@ -1,14 +1,17 @@
 const API_LOCAL = 'http://localhost:9500';
+const API_PROD = 'https://merazmi-carent.herokuapp.com';
+
+const API_SELECTED = API_PROD;
 
 export const API = {
 	CARS: {
-		READALL: API_LOCAL + '/api/cars',
-		READONE: API_LOCAL + '/api/cars/',
-		CREATE: API_LOCAL + '/api/cars',
-		UPDATE: API_LOCAL + '/api/cars/',
-		DELETE: API_LOCAL + '/api/cars/',
+		READALL: API_SELECTED + '/api/cars',
+		READONE: API_SELECTED + '/api/cars/',
+		CREATE: API_SELECTED + '/api/cars',
+		UPDATE: API_SELECTED + '/api/cars/',
+		DELETE: API_SELECTED + '/api/cars/',
 	},
 	FILE: {
-		GETURL: API_LOCAL + '/api/upload',
+		GETURL: API_SELECTED + '/api/upload',
 	},
 };
