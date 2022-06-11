@@ -69,13 +69,27 @@ export default function CarsAdd() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const copyInput = { ...input };
+		const copyInput = { ...input, location: { ...input.location } };
 		copyInput.location.type = 3;
 		copyInput.location.country = 'Malaysia';
 
-		const res = await axios.post(API.CARS.CREATE, copyInput);
+		const imagePaths = [];
 
-		console.log(copyInput, res);
+		if (copyInput.images.length > 0) {
+			for (let i = 0; i < copyInput.images.length; i++) {
+				const { data: s3 } = await axios.get(API.FILE.GETURL);
+				await axios.put(s3.url, copyInput.images[i], { headers: { 'Content-Type': 'multipart/form-data' } });
+				const imagePath = s3.url.split('?')[0];
+				imagePaths.push(imagePath);
+			}
+		}
+		copyInput.images = imagePaths;
+		await axios.post(API.CARS.CREATE, copyInput);
+
+		setInput({ location: {} });
+		const getImageInput = document.querySelector('input[type="file"]');
+		console.log(getImageInput);
+		getImageInput.value = '';
 	};
 
 	return (

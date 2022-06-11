@@ -8,4 +8,7 @@ export const API = {
 		UPDATE: API_LOCAL + '/api/cars/',
 		DELETE: API_LOCAL + '/api/cars/',
 	},
+	FILE: {
+		GETURL: API_LOCAL + '/api/upload',
+	},
 };

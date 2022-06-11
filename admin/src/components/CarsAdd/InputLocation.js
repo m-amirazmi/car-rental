@@ -12,6 +12,7 @@ export default function InputLocation({ input, setInput, statesCities }) {
 						className="form-control"
 						id="address_1"
 						placeholder="eg: A8-4-4 Jalan Mewah ..."
+						value={input.location?.address_1}
 						onChange={({ target }) => setInput({ ...input, location: { ...input.location, address_1: target.value } })}
 					/>
 				</div>
@@ -27,6 +28,7 @@ export default function InputLocation({ input, setInput, statesCities }) {
 						className="form-control"
 						id="address_2"
 						placeholder="eg: Taman Pandan Mewah,..."
+						value={input.location?.address_2}
 						onChange={({ target }) => setInput({ ...input, location: { ...input.location, address_2: target.value } })}
 					/>
 				</div>
@@ -42,6 +44,7 @@ export default function InputLocation({ input, setInput, statesCities }) {
 						className="form-control"
 						id="postcode"
 						placeholder="eg: Taman Pandan Mewah,..."
+						value={input.location?.postcode}
 						onChange={({ target }) => setInput({ ...input, location: { ...input.location, postcode: target.value } })}
 					/>
 				</div>
@@ -49,13 +52,19 @@ export default function InputLocation({ input, setInput, statesCities }) {
 					<label htmlFor="city" className="form-label">
 						State
 					</label>
-					<select id="state" className="form-select" onChange={({ target }) => setInput({ ...input, location: { ...input.location, state: target.value } })} defaultValue="">
+					<select
+						id="state"
+						className="form-select"
+						value={input.location?.state}
+						onChange={({ target }) => setInput({ ...input, location: { ...input.location, state: target.value } })}
+						defaultValue=""
+					>
 						<option value="" disabled>
 							-- Select State --
 						</option>
 						{statesCities.map((c) => (
-							<option key={c.state} value={c.state}>
-								{c.state}
+							<option key={c?.state} value={c?.state}>
+								{c?.state}
 							</option>
 						))}
 					</select>
@@ -66,16 +75,17 @@ export default function InputLocation({ input, setInput, statesCities }) {
 					</label>
 					<select
 						id="city"
-						disabled={!input.location.state}
+						disabled={!input.location?.state}
 						className="form-select"
+						value={input.location?.city}
 						onChange={({ target }) => setInput({ ...input, location: { ...input.location, city: target.value } })}
 						defaultValue=""
 					>
 						<option value="" disabled>
-							-- Select ONE Brand --
+							-- Select City --
 						</option>
 						{statesCities
-							.find((s) => s.state === input.location.state)
+							.find((s) => s?.state === input.location?.state)
 							?.cities.map((c) => (
 								<option key={c} value={c}>
 									{c}
@@ -95,6 +105,7 @@ export default function InputLocation({ input, setInput, statesCities }) {
 						className="form-control"
 						id="lat"
 						placeholder="eg: 3.121184"
+						value={input.location?.lat}
 						onChange={({ target }) => setInput({ ...input, location: { ...input.location, lat: target.value } })}
 					/>
 				</div>
@@ -107,6 +118,7 @@ export default function InputLocation({ input, setInput, statesCities }) {
 						className="form-control"
 						id="lng"
 						placeholder="eg: 101.7637782"
+						value={input.location?.lng}
 						onChange={({ target }) => setInput({ ...input, location: { ...input.location, lng: target.value } })}
 					/>
 				</div>

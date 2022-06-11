@@ -11,9 +11,11 @@ app.use(express.json());
 
 const userRoutes = require('./routes/users');
 const carRoutes = require('./routes/cars');
+const uploadRoutes = require('./routes/upload');
 
 app.use('/auth', userRoutes);
 app.use('/api/cars', carRoutes);
+app.use('/api/upload', uploadRoutes);
 
 connection.once('open', () => {
 	console.log('Connected to MongoDB');
